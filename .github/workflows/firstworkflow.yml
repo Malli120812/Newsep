@@ -2,10 +2,9 @@ name: First Workflow
  
 # triggers -vents - Push , Pull_request , Issue , workflow_dispatch , fork , Pull_request_review, schedule
  
-on:
 
+on:
   push:
-  
    branches:
     - master
     - '! develop '
@@ -13,38 +12,52 @@ on:
     - '*.txt'
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Print build
-
         run: echo "build"
-
   test:
-
     needs: build
-
     runs-on: windows-latest
-
     steps:
-
       - name: Print test
-
         run: echo "test"
-
   deploy:
-
     needs: [build, test]
-
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Print deploy
-
         run: echo "deploy"
+ 
+ 
+name: First Workflow
+ 
+# triggers -vents - Push , Pull_request , Issue , workflow_dispatch , fork , Pull_request_review, schedule
+ 
+
+on:
+  push:
+   branches:
+     - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print build
+        run: echo "build"
+  test:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - name: Print test
+        run: echo "test"
+  deploy:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy
+        run: echo "deploy"
+ 
  
