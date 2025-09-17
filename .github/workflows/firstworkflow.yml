@@ -1,12 +1,12 @@
-name: FirstWorkflow
+name: First Workflow
  
 # triggers -vents - Push , Pull_request , Issue , workflow_dispatch , fork , Pull_request_review, schedule
  
 
 on:
- schedule:
+  schedule:
  
-   - cron: '30 5 * * *'    # runs every day at 5:30 am
+   - cron: '* * * * *'    # runs every day 
    workflow_dispatch:       # manual trigger
 
 jobs:
@@ -27,35 +27,3 @@ jobs:
     steps:
       - name: Print deploy
         run: echo "deploy"
- 
- 
-name: First Workflow
- 
-# triggers -vents - Push , Pull_request , Issue , workflow_dispatch , fork , Pull_request_review, schedule
- 
-
-on:
-  push:
-   branches:
-     - develop
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print build
-        run: echo "build"
-  test:
-    needs: build
-    runs-on: windows-latest
-    steps:
-      - name: Print test
-        run: echo "test"
-  deploy:
-    needs: [build, test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print deploy
-        run: echo "deploy"
- 
- 
