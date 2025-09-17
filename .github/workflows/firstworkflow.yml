@@ -1,4 +1,4 @@
-name: First Workflow
+name: FirstWorkflow
  
 # triggers -vents - Push , Pull_request , Issue , workflow_dispatch , fork , Pull_request_review, schedule
  
